@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.navArgs
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EncryptFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EncryptFragment : Fragment() {
+    val args:EncryptFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,7 +17,8 @@ class EncryptFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_encrypt, container, false)
-        val message = EncryptFragmentArgs.fromBundle(requireArguments()).message
+//        val message = EncryptFragmentArgs.fromBundle(requireArguments()).message
+        val message = args.message
         val encryptedView = view.findViewById<TextView>(R.id.encrypted_message)
         encryptedView.text = message.reversed()
 
